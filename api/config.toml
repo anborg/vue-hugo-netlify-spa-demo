@@ -5,7 +5,7 @@ disableKinds = ["RSS", "sitemap"]
 
 [outputFormats.JSON]
 baseName = "get"
-isPlainText = true
+isPlainText = false
 isHTML = false
 noUgly = false
 
@@ -16,3 +16,17 @@ noUgly = false
   mainType = "application"
   subType = "json"
   suffix = "json"
+
+
+[server]
+
+  [[server.headers]]
+    for = "/**"
+    [server.headers.values]
+      sdfsdContent-Security-Policy = "script-src localhost:1313"
+      asdfasdReferrer-Policy = "strict-origin-when-cross-origin"
+      X-Content-Type-Options = "nosniff"
+      X-Frame-Options = "DENY"
+      X-XSS-Protection = "1; mode=block"
+      Access-Control-Allow-Origin = "*"
+      Access-Control-Allow-Methods = "GET, POST, OPTIONS"
